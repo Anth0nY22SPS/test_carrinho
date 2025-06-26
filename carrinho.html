@@ -1,18 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carrinho</title>
+  <style>
+    .butao_carrinho {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+    }
+    #butao_mais, #butao_menos {
+      margin-top: 10px;
+      background-color: white;
+      height: 30px;
+      width: 30px;
+      border: 1px solid black;
+      cursor: pointer;
+    }
+  </style>
 </head>
+
 <body>
-    <div class = carrinho>
-        <div class="butao_carrinho">
-            <button id="butao_mais" onclick="maisCarrinho()">+</button>
-            <p  id="quantidade"></p>
-            <button id="butao_menos" onclick="menosCarrinho()">-</button>
-        </div>
+  <div class="carrinho">
+    <div class="butao_carrinho">
+      <button id="butao_mais" onclick="maisCarrinho()">+</button>
+      <p id="quantidade">0</p>
+      <button id="butao_menos" onclick="menosCarrinho()">-</button>
     </div>
+  </div>
+
+  <script>
+    let quantidade = 0;
+
+    function maisCarrinho() {
+      quantidade++;
+      atualizarQuantidade();
+    }
+
+    function menosCarrinho() {
+      if (quantidade > 0) {
+        quantidade--;
+        atualizarQuantidade();
+      }
+    }
+
+    function atualizarQuantidade() {
+      document.getElementById('quantidade').textContent = quantidade;
+    }
+
+    // Inicializa o valor
+    atualizarQuantidade();
+  </script>
 </body>
 </html>
